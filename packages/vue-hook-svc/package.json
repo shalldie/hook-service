@@ -1,0 +1,44 @@
+{
+  "name": "vue-hook-svc",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/vue-hook-svc.umd.js",
+  "types": "dist/src/service.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "vue": "^3.2.13",
+    "vue-demi": "^0.11.4"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.6",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "@vitejs/plugin-vue": "^1.9.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.4.1",
+    "sass": "^1.42.1",
+    "typescript": "^4.4.3",
+    "vite": "^2.5.10",
+    "vite-plugin-dts": "^0.8.1",
+    "vue-tsc": "^0.3.0"
+  }
+}

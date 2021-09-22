@@ -1,0 +1,25 @@
+{
+  "name": "hook-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for service、state manager to Vue/React.",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean --yes",
+    "dev": "lerna run dev --scope=@blog/nest-server --stream",
+    "build": "lerna run build --stream",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalldie/hook-service.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shalldie/hook-service/issues"
+  },
+  "homepage": "https://github.com/shalldie/hook-service#readme",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
