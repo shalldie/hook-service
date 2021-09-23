@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+.todo-list {
+    // border: 1px solid #2ad;
+    margin: 0 auto;
+    width: 500px;
+    box-shadow: 0 0 4px #ddd;
+    padding: 20px;
+
+    .todo-add {
+        margin-bottom: 10px;
+    }
+}
+
+.todo-add {
+    display: flex;
+
+    input {
+        flex: 1;
+        transition: 0.3s;
+        padding: 0 6px;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        height: 30px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    button {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+        padding: 6px 12px;
+        border-radius: 3px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: 700;
+        border: 1px solid #ddd;
+        height: 30px;
+        line-height: 1;
+        outline: none;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
+}
+
+.todo-item {
+    display: flex;
+    border-bottom: 1px dashed #2ad;
+    padding: 6px 0;
+
+    .content {
+        flex: 1;
+        cursor: pointer;
+    }
+
+    &.done .content {
+        text-decoration: line-through;
+        color: red;
+    }
+
+    .ctl {
+        width: 50px;
+        cursor: pointer;
+        border-left: 1px dashed #2ad;
+        text-align: center;
+    }
+}
+
+.todo-tab {
+    display: flex;
+    border-bottom: 1px dashed #2ad;
+    text-align: center;
+
+    .tab-item {
+        flex: 1;
+        padding: 8px;
+        cursor: pointer;
+
+        & + .tab-item {
+            border-left: 1px dashed #2ad;
+        }
+
+        &.active {
+            color: #2ad;
+            font-weight: bold;
+        }
+    }
+}

@@ -5,6 +5,7 @@
     "dist"
   ],
   "main": "dist/vue-hook-svc.umd.js",
+  "module": "dist/vue-hook-svc.es.js",
   "types": "dist/src/service.d.ts",
   "scripts": {
     "dev": "vite",
@@ -24,7 +25,6 @@
     }
   },
   "dependencies": {
-    "vue": "^3.2.13",
     "vue-demi": "^0.11.4"
   },
   "devDependencies": {
@@ -39,6 +39,7 @@
     "typescript": "^4.4.3",
     "vite": "^2.5.10",
     "vite-plugin-dts": "^0.8.1",
+    "vue": "^3.2.13",
     "vue-tsc": "^0.3.0"
   }
 }
