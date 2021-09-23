@@ -28,4 +28,4 @@ function TodoListBase() {
 export const TodoList = withTodoContext(TodoListBase);
 
 // 当有多个 withContext 的时候可以用 connect
-export const TodoList2 = svc.connectContext(TodoListBase, withTodoContext);
+export const TodoList2 = svc.connectProvider(TodoListBase, withTodoContext);

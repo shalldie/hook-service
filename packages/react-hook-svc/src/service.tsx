@@ -5,8 +5,8 @@ class ServiceBase<S = {}> {
     setState!: React.Dispatch<React.SetStateAction<Partial<S>>>;
 }
 
-function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context = createContext<S>(null as any)) {
-    function withContext<T>(Child: React.ComponentType<T>) {
+function createServiceCtx<S extends ServiceBase>(Service: new () => S, context = createContext<S>(null as any)) {
+    function withProvider<T>(Child: React.ComponentType<T>) {
         return (props: T) => {
             const sr = useRef<S>(null as any);
             if (!sr.current) {
@@ -17,12 +17,6 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context =
             sr.current.state = state;
             sr.current.setState = (payload: Function | Object) => {
                 if (typeof payload === 'function') {
-                    // const result = payload(state);
-                    // setState({
-                    //     ...state,
-                    //     ...result
-                    // });
-                    // return;
                     payload = payload(state);
                 }
 
@@ -33,37 +27,29 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context =
             };
 
             return (
-                <Context.Provider value={sr.current}>
+                <context.Provider value={sr.current}>
                     <Child {...props} />
-                </Context.Provider>
+                </context.Provider>
             );
         };
     }
 
     function useService() {
-        return useContext(Context);
+        return useContext(context);
     }
 
-    return {
-        withContext,
-        useService,
-        context: Context
-    };
+    return { withProvider, useService, context };
 }
 
-type TWithContext<T> = (Child: React.ComponentType<T>) => (props: T) => JSX.Element;
+type TWithProvider<T> = (Child: React.ComponentType<T>) => (props: T) => JSX.Element;
 
-function connectContext<T>(Child: React.ComponentType<T>, ...withContextWrappers: TWithContext<T>[]) {
+function connectProvider<T>(Child: React.ComponentType<T>, ...withContextWrappers: TWithProvider<T>[]) {
     for (const withCtx of withContextWrappers) {
         Child = withCtx(Child);
     }
     return Child;
 }
 
-const svc = {
-    ServiceBase,
-    createServiceCtx,
-    connectContext
-};
-
-export { svc, ServiceBase, createServiceCtx, connectContext };
+// wrap namespace
+const svc = { ServiceBase, createServiceCtx, connectProvider };
+export { svc, ServiceBase, createServiceCtx, connectProvider };
