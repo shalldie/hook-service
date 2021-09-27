@@ -17,10 +17,10 @@ const list = [
     }
 ];
 
-export function TodoTab() {
+function useTabs() {
     const todo = useTodo();
 
-    const tabs = useMemo(() => {
+    return useMemo(() => {
         return list.map(item => {
             return {
                 ...item,
@@ -33,6 +33,10 @@ export function TodoTab() {
             };
         });
     }, [todo.state.type]);
+}
+
+export function TodoTab() {
+    const tabs = useTabs();
 
     return (
         <div className="todo-tab">

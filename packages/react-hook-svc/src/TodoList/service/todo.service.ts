@@ -41,4 +41,4 @@ class TodoService extends svc.ServiceBase<TodoServiceState> {
     }
 }
 
-export const { useService: useTodo, withProvider: withTodoContext } = svc.createServiceCtx(TodoService);
+export const { useService: useTodo, withProvider: withTodoProvider } = svc.createServiceCtx(TodoService);

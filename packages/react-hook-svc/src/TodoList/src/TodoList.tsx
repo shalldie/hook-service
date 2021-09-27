@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { ETodoType, useTodo, withTodoContext } from '..';
+import { ETodoType, useTodo, withTodoProvider } from '..';
 import { svc } from '../../service';
 import { TodoAdd } from './TodoAdd';
 import { TodoItem } from './TodoItem';
@@ -25,7 +25,7 @@ function TodoListBase() {
     );
 }
 
-export const TodoList = withTodoContext(TodoListBase);
+export const TodoList = withTodoProvider(TodoListBase);
 
-// 当有多个 withContext 的时候可以用 connect
-export const TodoList2 = svc.connectProvider(TodoListBase, withTodoContext);
+// 当有多个 withProvider 的时候可以用 connect
+export const TodoList2 = svc.connectProvider(TodoListBase, withTodoProvider);
