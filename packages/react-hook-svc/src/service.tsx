@@ -6,6 +6,12 @@ class ServiceBase<S = {}> {
 }
 
 function createServiceCtx<S extends ServiceBase>(Service: new () => S, context = createContext<S>(null as any)) {
+    let serviceInstance: S;
+
+    function getService() {
+        return serviceInstance;
+    }
+
     function useService() {
         return useContext(context);
     }
@@ -15,6 +21,7 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, context =
             const sr = useRef<S>(null as any);
             if (!sr.current) {
                 sr.current = useService() || new Service();
+                serviceInstance = serviceInstance || sr.current;
             }
 
             const [state, setState] = useState(sr.current.state);
@@ -38,7 +45,7 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, context =
         };
     }
 
-    return { useService, withProvider, context };
+    return { getService, useService, withProvider, context };
 }
 
 type TWithProvider<T> = (Child: React.ComponentType<T>) => (props: T) => JSX.Element;

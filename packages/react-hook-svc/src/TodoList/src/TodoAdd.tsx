@@ -1,13 +1,9 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { useTodo } from '..';
 
 export function TodoAdd() {
     const todo = useTodo();
     const [model, setModel] = useState('');
-
-    function handleChange(ex: ChangeEvent<HTMLInputElement>) {
-        setModel(ex.target.value);
-    }
 
     function addTodo() {
         if (!model.length) {
@@ -19,7 +15,7 @@ export function TodoAdd() {
 
     return (
         <div className="todo-add">
-            <input value={model} onChange={handleChange} type="text" />
+            <input value={model} onChange={ex => setModel(ex.target.value)} type="text" />
             <button onClick={addTodo}>添加</button>
         </div>
     );
