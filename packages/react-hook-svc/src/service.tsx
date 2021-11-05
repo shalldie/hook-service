@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useState } from 'react';
+import { createContext, FC, useContext, useRef, useState } from 'react';
 
 class ServiceBase<S = {}> {
     public state: S = {} as any;
@@ -57,6 +57,11 @@ function connectProvider<T>(Child: React.ComponentType<T>, ...withContextWrapper
     return Child;
 }
 
+const Provider: FC<{ withProviders?: TWithProvider<any>[] }> = props => {
+    const Com = connectProvider(props.children![0], ...(props.withProviders || []));
+    return <Com />;
+};
+
 // wrap namespace
-const svc = { ServiceBase, createServiceCtx, connectProvider };
-export { svc, ServiceBase, createServiceCtx, connectProvider };
+const svc = { Provider, ServiceBase, createServiceCtx, connectProvider };
+export { svc, Provider, ServiceBase, createServiceCtx, connectProvider };

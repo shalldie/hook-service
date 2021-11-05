@@ -12,6 +12,9 @@
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "peerDependencies": {
     "react": "^17.0.0",
     "react-dom": "^17.0.0"

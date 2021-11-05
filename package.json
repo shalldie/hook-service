@@ -6,7 +6,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
-    "dev": "lerna run dev --scope=@blog/nest-server --stream",
+    "dev:vue": "lerna run dev --scope=vue-hook-svc --stream",
+    "dev:react": "lerna run dev --scope=react-hook-svc --stream",
     "build": "lerna run build --stream",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
