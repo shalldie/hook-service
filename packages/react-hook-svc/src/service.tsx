@@ -1,11 +1,11 @@
-import { createContext, FC, useContext, useRef, useState } from 'react';
+import { createContext, FC, ReactChild, ReactChildren, useContext, useRef, useState } from 'react';
 
 class ServiceBase<S = {}> {
     public state: S = {} as any;
     setState!: React.Dispatch<React.SetStateAction<Partial<S>>>;
 }
 
-function createServiceCtx<S extends ServiceBase>(Service: new () => S, context = createContext<S>(null as any)) {
+function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context = createContext<S>(null as any)) {
     let serviceInstance: S;
 
     function getService() {
@@ -13,16 +13,13 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, context =
     }
 
     function useService() {
-        return useContext(context);
+        return useContext(Context);
     }
 
     function withProvider<T>(Child: React.ComponentType<T>) {
         return (props: T) => {
-            const sr = useRef<S>(null as any);
-            if (!sr.current) {
-                sr.current = useService() || new Service();
-                serviceInstance = serviceInstance || sr.current;
-            }
+            const sr = useRef(new Service());
+            serviceInstance = sr.current;
 
             const [state, setState] = useState(sr.current.state);
             sr.current.state = state;
@@ -38,27 +35,29 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, context =
             };
 
             return (
-                <context.Provider value={sr.current}>
+                <Context.Provider value={sr.current}>
                     <Child {...props} />
-                </context.Provider>
+                </Context.Provider>
             );
         };
     }
 
-    return { getService, useService, withProvider, context };
+    return { getService, useService, withProvider, context: Context };
 }
 
 type TWithProvider<T> = (Child: React.ComponentType<T>) => (props: T) => JSX.Element;
 
-function connectProvider<T>(Child: React.ComponentType<T>, ...withContextWrappers: TWithProvider<T>[]) {
-    for (const withCtx of withContextWrappers) {
-        Child = withCtx(Child);
+function connectProvider<T>(Child: React.ComponentType<T>, ...withProviders: TWithProvider<T>[]) {
+    for (const withPro of withProviders) {
+        Child = withPro(Child);
     }
     return Child;
 }
 
+// const Wrapper:React.FC = props=>
+
 const Provider: FC<{ withProviders?: TWithProvider<any>[] }> = props => {
-    const Com = connectProvider(props.children![0], ...(props.withProviders || []));
+    const Com = connectProvider(() => <>{props.children}</>, ...(props.withProviders || []));
     return <Com />;
 };
 

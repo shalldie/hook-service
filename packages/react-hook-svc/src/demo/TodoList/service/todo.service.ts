@@ -1,5 +1,5 @@
 import { ETodoType, TTodoItem } from '.';
-import { svc } from '../../service';
+import { svc } from '../../../service';
 
 class TodoServiceState {
     /** 当前选择 tab */
