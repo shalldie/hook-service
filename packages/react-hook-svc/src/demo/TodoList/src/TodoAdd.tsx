@@ -12,7 +12,7 @@ export function TodoAdd() {
         todo.addTodo(model);
         setModel('');
     }
-    console.log('invoke todoadd');
+    // console.log('invoke todoadd');
 
     return (
         <div className="todo-add">

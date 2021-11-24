@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { ETodoType, useTodo } from '..';
 import cn from 'classnames';
 
-const list = [
+const TAB_LIST = [
     {
         name: '全部',
         value: ETodoType.ALL
@@ -21,7 +21,7 @@ function useTabs() {
     const todo = useTodo();
 
     return useMemo(() => {
-        return list.map(item => {
+        return TAB_LIST.map(item => {
             return {
                 ...item,
                 className: cn('tab-item', { active: todo.state.type === item.value }),
@@ -32,7 +32,7 @@ function useTabs() {
                 }
             };
         });
-    }, [todo.state.type]);
+    }, [todo]);
 }
 
 export function TodoTab() {

@@ -1,4 +1,4 @@
-import { ETodoType, TTodoItem } from '.';
+import { ETodoType, TTodoItem } from './todo.types';
 import { svc } from '../../../service';
 
 class TodoServiceState {
