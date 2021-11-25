@@ -22,13 +22,14 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context =
             const [state, setState] = useState(currentInstance.state);
 
             const setStateWrap = (payload: Function | Object) => {
-                if (typeof payload === 'function') {
-                    payload = payload(state);
-                }
-
-                setState({
-                    ...state,
-                    ...payload
+                setState(state => {
+                    if (typeof payload === 'function') {
+                        payload = payload(state);
+                    }
+                    return {
+                        ...state,
+                        ...payload
+                    };
                 });
             };
 
