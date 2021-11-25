@@ -9,7 +9,8 @@
     "dev:vue": "lerna run dev --scope=vue-hook-svc --stream",
     "dev:react": "lerna run dev --scope=react-hook-svc --stream",
     "build": "lerna run build --stream",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lp": "lerna publish --no-push --no-commit-hooks"
   },
   "repository": {
     "type": "git",
