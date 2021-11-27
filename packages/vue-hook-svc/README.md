@@ -2,7 +2,7 @@
 
 [![npm][vue-hook-svc-icon]][vue-hook-svc-npm]
 [![Build Status](https://img.shields.io/github/workflow/status/shalldie/hook-service/ci?label=build&logo=github&style=flat-square)](https://github.com/shalldie/hook-service/actions)
-[![License](https://img.shields.io/npm/l/vue-hook-service?logo=github&style=flat-square)](https://github.com/shalldie/hook-service)
+[![License](https://img.shields.io/npm/l/vue-hook-svc?logo=github&style=flat-square)](https://github.com/shalldie/hook-service)
 
 `Monorepo` of service、state manager for Vue2/Vue3/vue. `minzipped` less than `300 bytes`。
 
