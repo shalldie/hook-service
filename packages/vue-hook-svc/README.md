@@ -21,6 +21,8 @@ A service、state manager for Vue2/Vue3. `minzipped` less than `300 bytes`。
 
 ## Usage & Example
 
+### `declare a service`
+
 ```ts
 // declare a service
 import { svc } from 'vue-hook-svc';
@@ -41,12 +43,16 @@ export const globalSomeSvc = svc.createSingleton(SomeService);
 export const useSomeSvc = svc.createUseService(GlobalService);
 ```
 
+### `use in global, anywhere`
+
 ```ts
 // use in global, anywhere
 import { globalSomeSvc } from '.';
 
 globalSomeSvc.state.show = false;
 ```
+
+### `use with the component's lifecycle`
 
 ```ts
 // use with the component's lifecycle
@@ -55,6 +61,8 @@ globalSomeSvc.state.show = false;
 // then all children can use `useSomeSvc` to get the same instance.
 const svc = useSomeSvc();
 ```
+
+### `use in template`
 
 ```html
 <!-- use in template -->

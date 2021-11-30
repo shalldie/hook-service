@@ -9,22 +9,22 @@ A service、state manager for React. `minzipped` less than `300 bytes`。
 
 [English](./README.md) | [中文](./README.zh-CN.md)
 
-## Advantage
+## 优势
 
--   **~300 bytes** _min+gz._
--   **Minimal API** _5 minutes to learn, easy to use._
--   **Written in TypeScript** _offer you more types._
+-   **~300 bytes** _min+gz_
+-   **最小 API** _看 5 分钟就能写，简单易用_
+-   **TypeScript 编写** _提供足够多的类型推导_
 
-## Installation
+## 安装
 
     npm install react-hook-svc --save
 
-## Usage & Example
+## 使用 & 示例
 
-### `declare a service`
+### `定义一个 service`
 
 ```ts
-// declare a service
+// 定义一个 service
 // service.ts
 import { svc } from 'react-hook-svc';
 
@@ -42,19 +42,19 @@ export class SomeService extends svc.ServiceBase<SomeState> {
     }
 }
 
-// create a service func depends on the component's lifecycle
+// 创建 service 相关使用方法，跟随组件生命周期
 export const { useService, getService, withProvider } = svc.createServiceCtx(SomeService);
 ```
 
-### `wrap the component with withProvider`
+### `通过 withProvider 把组件包一层`
 
 ```tsx
-// wrap the component with withProvider
+// 通过 withProvider 把组件包一层
 import { svc } from 'react-hook-svc';
 import { useService, withProvider } from './service';
 
 function AppBase() {
-    // after wrapper, current component and it's children will get the same instance with `useService`
+    // 在包一层之后，当前及其子组件，都可以使用 `userService` 获取相同的实例
     const svc = useService();
 
     const show = useMemo(() => svc.state.show, [svc]);
@@ -68,15 +68,15 @@ function AppBase() {
 }
 
 export const App = withProvider(AppBase);
-// this may be usefull with lots of withProviders
+// 如果有很多 withProviders，使用 svc.connect 会方便很多
 // export const App = svc.connect(withProvider)(App);
 ```
 
-### `use it outside the component, anywhere`
+### `在组件之外访问 service`
 
 ```ts
-// when withProvider the root component of App, the service may be a global one.
-// you can get it with `getService`
+// 如果 withProvider 了应用的根组件，那么就可以视为一个全局 service
+// 可以通过 getService 拿到最新的实例
 import { getService } from './service';
 
 function demo() {

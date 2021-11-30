@@ -19,7 +19,9 @@
 
     npm install vue-hook-svc --save
 
-## 用法 & 示例
+## 使用 & 示例
+
+### `定义一个 service`
 
 ```ts
 // 定义一个 service
@@ -41,12 +43,16 @@ export const globalSomeSvc = svc.createSingleton(SomeService);
 export const useSomeSvc = svc.createUseService(GlobalService);
 ```
 
+### `使用全局 service`
+
 ```ts
 // 使用全局 service
 import { globalSomeSvc } from '.';
 
 globalSomeSvc.state.show = false;
 ```
+
+### `跟随组件生命周期的 service`
 
 ```ts
 // 使用跟随组件生命周期的 service，需要在 `setup` 中
@@ -55,8 +61,10 @@ globalSomeSvc.state.show = false;
 const svc = useSomeSvc();
 ```
 
+### `在 template 中使用`
+
 ```html
-<!-- 在 template 中用 -->
+<!-- 在 template 中使用 -->
 <template>
     <div>
         <button @click="() => svc.toggle()">update</button>
