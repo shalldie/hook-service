@@ -11,9 +11,9 @@
 
 ## 优势
 
--   **~300 bytes** _min+gz._
+-   **~300 bytes** _min+gz_
 -   **最小 API** _看 5 分钟就能写，简单易用_
--   **TypeScript 编写** _提供足够多的类型推导._
+-   **TypeScript 编写** _提供足够多的类型推导_
 
 ## 安装
 
@@ -27,11 +27,11 @@ import { svc } from 'vue-hook-svc';
 
 export class SomeService extends svc.ServiceBase {
     state = {
-        time: 0
+        show: true
     };
 
-    updateTime() {
-        this.state.time = new Date().toLocaleTimeString();
+    toggle() {
+        this.state.show = !this.state.show;
     }
 }
 
@@ -45,7 +45,7 @@ export const useSomeSvc = svc.createUseService(GlobalService);
 // 使用全局 service
 import { globalSomeSvc } from '.';
 
-globalSomeSvc.state.time = 'some new str';
+globalSomeSvc.state.show = false;
 ```
 
 ```ts
@@ -55,15 +55,19 @@ globalSomeSvc.state.time = 'some new str';
 const svc = useSomeSvc();
 ```
 
-```vue
-// 在 template 中用
+```html
+<!-- 在 template 中用 -->
 <template>
     <div>
-        <span>{{ svc.state.time }}</span>
-        <button @click="() => svc.updateTime()">update</button>
+        <button @click="() => svc.toggle()">update</button>
+        <span v-if="svc.state.show">...</span>
     </div>
 </template>
 ```
+
+## 协议
+
+MIT
 
 <!-- vue-hook-svc -->
 

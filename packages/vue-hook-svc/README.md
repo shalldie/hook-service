@@ -5,14 +5,14 @@
 [![Build Status](https://img.shields.io/github/workflow/status/shalldie/hook-service/ci?label=build&logo=github&style=flat-square)](https://github.com/shalldie/hook-service/actions)
 [![License](https://img.shields.io/npm/l/vue-hook-svc?logo=github&style=flat-square)](https://github.com/shalldie/hook-service)
 
-`Monorepo` of service、state manager for Vue2/Vue3. `minzipped` less than `300 bytes`。
+A service、state manager for Vue2/Vue3. `minzipped` less than `300 bytes`。
 
 [English](./README.md) | [中文](./README.zh-CN.md)
 
 ## Advantage
 
 -   **~300 bytes** _min+gz._
--   **Minimal API** _5 minutes to learn, easy to use_
+-   **Minimal API** _5 minutes to learn, easy to use._
 -   **Written in TypeScript** _offer you more types._
 
 ## Installation
@@ -27,11 +27,11 @@ import { svc } from 'vue-hook-svc';
 
 export class SomeService extends svc.ServiceBase {
     state = {
-        time: 0
+        show: true
     };
 
-    updateTime() {
-        this.state.time = new Date().toLocaleTimeString();
+    toggle() {
+        this.state.show = !this.state.show;
     }
 }
 
@@ -45,7 +45,7 @@ export const useSomeSvc = svc.createUseService(GlobalService);
 // use in global, anywhere
 import { globalSomeSvc } from '.';
 
-globalSomeSvc.state.time = 'some new str';
+globalSomeSvc.state.show = false;
 ```
 
 ```ts
@@ -56,15 +56,19 @@ globalSomeSvc.state.time = 'some new str';
 const svc = useSomeSvc();
 ```
 
-```vue
-// use in template
+```html
+<!-- use in template -->
 <template>
     <div>
-        <span>{{ svc.state.time }}</span>
-        <button @click="() => svc.updateTime()">update</button>
+        <button @click="() => svc.toggle()">update</button>
+        <span v-if="svc.state.show">...</span>
     </div>
 </template>
 ```
+
+## License
+
+MIT
 
 <!-- vue-hook-svc -->
 
