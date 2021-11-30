@@ -29,7 +29,7 @@
     - 我不想知道 `mutations`, `actions`, `dispatch`, `reducer`, `combineXXX`...
     - `时间旅行` 等概念很强大，但是 `99%` 的情况用不上，不需要。
 
-## 并非 store，而是 service
+## 不仅仅是 store，更是 service
 
 一个系统，亦或一块业务、一个组件，应该分为 `数据`、`业务`、`UI` 3 部分。
 

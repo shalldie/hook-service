@@ -5,24 +5,24 @@
 [![Build Status](https://img.shields.io/github/workflow/status/shalldie/hook-service/ci?label=build&logo=github&style=flat-square)](https://github.com/shalldie/hook-service/actions)
 [![License](https://img.shields.io/npm/l/vue-hook-svc?logo=github&style=flat-square)](https://github.com/shalldie/hook-service)
 
-`Monorepo` of service、state manager for Vue2/Vue3. `minzipped` less than `300 bytes`。
+极其精简的状态管理库，提供了 Vue2/3 版本。`minzipped` 不超过 `300 bytes`。
 
 [English](./README.md) | [中文](./README.zh-CN.md)
 
-## Advantage
+## 优势
 
 -   **~300 bytes** _min+gz._
--   **Minimal API** _5 minutes to learn, easy to use_
--   **Written in TypeScript** _offer you more types._
+-   **最小 API** _看 5 分钟就能写，简单易用_
+-   **TypeScript 编写** _提供足够多的类型推导._
 
-## Installation
+## 安装
 
     npm install vue-hook-svc --save
 
-## Usage & Example
+## 用法 & 示例
 
 ```ts
-// declare a service
+// 定义一个 service
 import { svc } from 'vue-hook-svc';
 
 export class SomeService extends svc.ServiceBase {
@@ -35,29 +35,28 @@ export class SomeService extends svc.ServiceBase {
     }
 }
 
-// create a global service
+// 创建一个全局的 service
 export const globalSomeSvc = svc.createSingleton(SomeService);
-// create a service func depends on the component's lifecycle
+// 创建一个方法获取 service，跟随组件生命周期
 export const useSomeSvc = svc.createUseService(GlobalService);
 ```
 
 ```ts
-// use in global, anywhere
+// 使用全局 service
 import { globalSomeSvc } from '.';
 
 globalSomeSvc.state.time = 'some new str';
 ```
 
 ```ts
-// use with the component's lifecycle
-// in setup of vue's file
+// 使用跟随组件生命周期的 service，需要在 `setup` 中
 
-// then all children can use `useSomeSvc` to get the same instance.
+// 所有的子组件和公共父组件共享 `useSomeSvc` 产生的实例
 const svc = useSomeSvc();
 ```
 
 ```vue
-// use in template
+// 在 template 中用
 <template>
     <div>
         <span>{{ svc.state.time }}</span>
