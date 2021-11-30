@@ -19,6 +19,10 @@ A service、state manager for Vue2/Vue3. `minzipped` less than `300 bytes`。
 
     npm install vue-hook-svc --save
 
+if in Vue2, you need `@vue/composition-api` installed
+
+    npm i @vue/composition-api --save
+
 ## Usage & Example
 
 ### `declare a service`

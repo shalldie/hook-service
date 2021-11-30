@@ -19,6 +19,10 @@
 
     npm install vue-hook-svc --save
 
+`Vue2` 版本依赖 `@vue/composition-api`
+
+    npm i @vue/composition-api --save
+
 ## 使用 & 示例
 
 ### `定义一个 service`
