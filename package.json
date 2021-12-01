@@ -16,6 +16,12 @@
     "type": "git",
     "url": "git+https://github.com/shalldie/hook-service.git"
   },
+  "keywords": [
+    "react",
+    "vue",
+    "store",
+    "service"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shalldie/hook-service/issues"

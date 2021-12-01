@@ -19,6 +19,11 @@
     "type": "git",
     "url": "git+https://github.com/shalldie/hook-service.git"
   },
+  "keywords": [
+    "react",
+    "store",
+    "service"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shalldie/hook-service/issues"
