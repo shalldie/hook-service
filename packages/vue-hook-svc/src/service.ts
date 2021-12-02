@@ -36,7 +36,7 @@ function createInstance<T extends { new (): InstanceType<T> }>(ServiceConstructo
 
 const SINGLETON_MAP = new Map();
 /**
- * 获取唯一单例
+ * create a singleton of service. 为 service 创建全局单例
  *
  * @template T
  * @param {T} ServiceConstructor
@@ -50,7 +50,7 @@ function createSingleton<T extends { new (): InstanceType<T> }>(ServiceConstruct
 }
 
 /**
- * 为组件间创建获取相同 service 的 use hook
+ * create a hook to get service. 为组件间创建获取相同 service 的 use hook
  *
  * @template T
  * @param {T} ServiceConstructor
