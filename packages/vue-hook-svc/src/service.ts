@@ -11,24 +11,28 @@ function cloneDeep<T>(sender: T): T {
  * @class ServiceBase
  */
 abstract class ServiceBase {
-    public defaultState = {};
-    public state = {};
-
+    public _defaultState = {};
     /**
-     * reset current service
+     * reactive state
+     *
+     * @memberof ServiceBase
+     */
+    public state = {};
+    /**
+     * reset current service state
      *
      * @returns
      * @memberof ServiceBase
      */
     reset() {
-        Object.assign(this.state, cloneDeep(this.defaultState));
+        Object.assign(this.state, cloneDeep(this._defaultState));
         return this;
     }
 }
 
 function createInstance<T extends { new (): InstanceType<T> }>(ServiceConstructor: T) {
     const instance = new ServiceConstructor();
-    instance['defaultState'] = cloneDeep(instance['state']);
+    instance['_defaultState'] = cloneDeep(instance['state']);
     instance['state'] = reactive(instance['state']);
 
     return instance;
