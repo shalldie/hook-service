@@ -4,6 +4,8 @@ function cloneDeep<T>(sender: T): T {
     return JSON.parse(JSON.stringify(sender));
 }
 
+const DEFAULT_STATE = Symbol();
+
 /**
  * service base class
  *
@@ -11,7 +13,7 @@ function cloneDeep<T>(sender: T): T {
  * @class ServiceBase
  */
 abstract class ServiceBase {
-    public _defaultState = {};
+    public [DEFAULT_STATE] = {};
     /**
      * reactive state
      *
@@ -25,14 +27,14 @@ abstract class ServiceBase {
      * @memberof ServiceBase
      */
     reset() {
-        Object.assign(this.state, cloneDeep(this._defaultState));
+        Object.assign(this.state, cloneDeep(this[DEFAULT_STATE]));
         return this;
     }
 }
 
 function createInstance<T extends { new (): InstanceType<T> }>(ServiceConstructor: T) {
     const instance = new ServiceConstructor();
-    instance['_defaultState'] = cloneDeep(instance['state']);
+    instance[DEFAULT_STATE] = cloneDeep(instance['state']);
     instance['state'] = reactive(instance['state']);
 
     return instance;
