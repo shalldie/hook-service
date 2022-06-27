@@ -16,6 +16,10 @@
 
 ---
 
+## 相关文章
+
+[Service - 业务与 UI 分离](https://nosaid.com/article/service-separate-logic-ui)
+
 ## 我所期望的状态管理
 
 1. 可以区分 全局/业务级
