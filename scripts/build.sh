@@ -11,9 +11,7 @@ BASE_PATH=$(
 
 cd $BASE_PATH
 
-npm ci
-
-npm run bootstrap
+pnpm i
 
 npm run build
 

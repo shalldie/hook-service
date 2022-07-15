@@ -1,16 +1,15 @@
 {
   "name": "hook-service",
   "version": "1.0.0",
+  "packageManager": "pnpm@7.5.1",
   "private": true,
   "description": "Monorepo for service、state manager to Vue/React.",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
-    "dev:vue": "lerna run dev --scope=vue-hook-svc --stream",
-    "dev:react": "lerna run dev --scope=react-hook-svc --stream",
-    "build": "lerna run build --stream",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lp": "lerna publish --no-git-reset --no-git-tag-version --no-push"
+    "dev:vue": "pnpm -r --filter=vue-hook-svc dev",
+    "dev:react": "pnpm -r --filter=react-hook-svc dev",
+    "build": "pnpm -r build"
   },
   "repository": {
     "type": "git",
@@ -28,6 +27,6 @@
   },
   "homepage": "https://github.com/shalldie/hook-service#readme",
   "devDependencies": {
-    "lerna": "^5.1.8"
+    "prettier": "^2.7.1"
   }
 }
