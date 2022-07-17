@@ -11,6 +11,8 @@ BASE_PATH=$(
 
 cd $BASE_PATH
 
+npm run clean
+
 pnpm i
 
 npm run build

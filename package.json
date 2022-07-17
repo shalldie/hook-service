@@ -5,11 +5,11 @@
   "private": true,
   "description": "Monorepo for service、state manager to Vue/React.",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "clean": "lerna clean --yes",
+    "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
     "dev:vue": "pnpm -r --filter=vue-hook-svc dev",
     "dev:react": "pnpm -r --filter=react-hook-svc dev",
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "patch": "pnpm -r exec npm version patch --no-git-tag-version"
   },
   "repository": {
     "type": "git",
