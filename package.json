@@ -1,7 +1,7 @@
 {
   "name": "hook-service",
   "version": "1.0.0",
-  "packageManager": "pnpm@7.5.1",
+  "packageManager": "pnpm@7.11.0",
   "private": true,
   "description": "Monorepo for service、state manager to Vue/React.",
   "scripts": {

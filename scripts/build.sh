@@ -1,12 +1,8 @@
 #!/bin/bash
 
 BASE_PATH=$(
-    cd $(dirname $0)
-    pwd -P
-)
-BASE_PATH=$(
-    cd $(dirname $BASE_PATH)
-    pwd -P
+    cd $(dirname $0)/..
+    pwd
 )
 
 cd $BASE_PATH

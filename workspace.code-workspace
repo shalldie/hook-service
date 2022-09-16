@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "react-hook-svc",
+			"path": "packages/react-hook-svc"
+		},
+		{
+			"name": "vue-hook-svc",
+			"path": "packages/vue-hook-svc"
+		},
+		{
+			"name": "hook-service",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
