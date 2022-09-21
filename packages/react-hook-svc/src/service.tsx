@@ -38,7 +38,7 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context =
 
             return (
                 <Context.Provider value={currentInstance}>
-                    <Child {...props} />
+                    <Child {...(props as any)} />
                 </Context.Provider>
             );
         };

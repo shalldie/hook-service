@@ -20,24 +20,11 @@
 
 [Service - 业务与 UI 分离](https://nosaid.com/article/service-separate-logic-ui)
 
-## 我所期望的状态管理
+## 优势
 
-1. 可以区分 全局/业务级
-    - 全局是单例
-    - 业务级有生命周期
-2. 有一个 reactive 的 state ，随便你在哪里用
-3. 有对应的业务方法，供对应业务组件使用
-    - 大部分业务应该放在 service 里面声明。 `service.method()`
-    - 不需要 props, emit, dispatch。 组件间传值可以是多余的。
-4. 使用简单，不要有太多概念，可以用常规优化方式
-    - 我不想知道 `mutations`, `actions`, `dispatch`, `reducer`, `combineXXX`...
-    - `时间旅行` 等概念很强大，但是 `99%` 的情况用不上，不需要。
-
-## 不仅仅是 store，更是 service
-
-一个系统，亦或一块业务、一个组件，应该分为 `数据`、`业务`、`UI` 3 部分。
-
-常见的 store 往往只是数据层，我希望 `状态管理`（service） 可以作为 `数据+业务`，组件（UI）只需要展示 service 的数据，调用 service 的方法。
+-   **~300 bytes** _min+gz_ 极简的体积
+-   **最小 API** _看 5 分钟就能写，简单易用，_ `不需要太多的概念`
+-   **TypeScript 编写** _提供足够多的类型推导_
 
 <!-- vue-hook-svc -->
 

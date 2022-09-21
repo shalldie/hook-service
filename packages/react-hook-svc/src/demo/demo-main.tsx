@@ -1,16 +1,15 @@
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { TodoList } from './TodoList';
 import { svc } from '../service';
 import { getGlobalService, useGlobal, withGlobalProvider } from './global.service';
 
 const App = svc.connect(withGlobalProvider)(TodoList);
 
-ReactDOM.render(
+createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
         <App />
-    </StrictMode>,
-    document.getElementById('root')
+    </StrictMode>
 );
 
 setInterval(() => {

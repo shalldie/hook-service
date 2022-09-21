@@ -1,15 +1,16 @@
 import path from 'path';
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [reactRefresh(), dts()],
-
-    esbuild: {
-        jsxInject: `import React from 'react'`
-    },
+    plugins: [
+        react({
+            jsxRuntime: 'classic'
+        }),
+        dts()
+    ],
 
     build: {
         lib: {
