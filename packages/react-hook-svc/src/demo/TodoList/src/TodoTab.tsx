@@ -32,7 +32,7 @@ function useTabs() {
                 }
             };
         });
-    }, [todo]);
+    }, [todo.state]);
 }
 
 export function TodoTab() {

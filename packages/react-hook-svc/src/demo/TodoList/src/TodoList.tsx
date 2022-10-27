@@ -13,7 +13,7 @@ function TodoListBase() {
 
     const list = useMemo(() => {
         return todo.state.list.filter(n => todo.state.type === ETodoType.ALL || todo.state.type === n.type);
-    }, [todo]);
+    }, [todo.state]);
 
     const content = useMemo(() => {
         return global.state.time;

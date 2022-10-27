@@ -1,11 +1,11 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useRef, useState } from 'react';
 
 class ServiceBase<S = {}> {
     public state: S = {} as any;
-    setState!: React.Dispatch<React.SetStateAction<Partial<S>>>;
+    setState!: (payload: Partial<S>) => void;
 }
 
-function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context = createContext<S>(null as any)) {
+function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context = createContext<{ s: S }>(null as any)) {
     let currentInstance: S;
 
     function getService() {
@@ -13,31 +13,31 @@ function createServiceCtx<S extends ServiceBase>(Service: new () => S, Context =
     }
 
     function useService() {
-        return useContext(Context);
+        return useContext(Context).s;
     }
 
     function withProvider<T>(Child: React.ComponentType<T>) {
         return (props: T) => {
-            currentInstance = new Service();
-            const [state, setState] = useState(currentInstance.state);
+            const instance = useRef<S>();
+            if (!instance.current) {
+                instance.current = new Service();
+                currentInstance = instance.current;
+            }
 
-            const setStateWrap = (payload: Function | Object) => {
-                setState(state => {
-                    if (typeof payload === 'function') {
-                        payload = payload(state);
-                    }
-                    return {
-                        ...state,
+            const [_state, setState] = useState(instance.current.state);
+
+            if (!instance.current.setState) {
+                instance.current.setState = (payload: Partial<S>) => {
+                    instance.current!.state = {
+                        ...instance.current!.state,
                         ...payload
                     };
-                });
-            };
-
-            currentInstance.state = state;
-            currentInstance.setState = setStateWrap;
+                    setState(instance.current!.state);
+                };
+            }
 
             return (
-                <Context.Provider value={currentInstance}>
+                <Context.Provider value={{ s: instance.current }}>
                     <Child {...(props as any)} />
                 </Context.Provider>
             );
