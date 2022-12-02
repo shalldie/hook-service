@@ -57,7 +57,7 @@ function AppBase() {
     // after wrapper, current component and it's children will get the same instance with `useService`
     const svc = useService();
 
-    const show = useMemo(() => svc.state.show, [svc]);
+    const show = useMemo(() => svc.state.show, [svc.state]);
 
     return (
         <>

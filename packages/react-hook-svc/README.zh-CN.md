@@ -57,7 +57,7 @@ function AppBase() {
     // 在包一层之后，当前及其子组件，都可以使用 `userService` 获取相同的实例
     const svc = useService();
 
-    const show = useMemo(() => svc.state.show, [svc]);
+    const show = useMemo(() => svc.state.show, [svc.state]);
 
     return (
         <>
