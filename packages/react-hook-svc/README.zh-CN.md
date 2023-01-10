@@ -2,7 +2,7 @@
 
 [![npm][react-hook-svc-icon]][react-hook-svc-npm]
 [![npm][react-hook-svc-bundle]][react-hook-svc-npm]
-[![Build Status](https://img.shields.io/github/workflow/status/shalldie/hook-service/ci?label=build&logo=github&style=flat-square)](https://github.com/shalldie/hook-service/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/shalldie/hook-service/ci.yml?branch=master&label=build&logo=github&style=flat-square)](https://github.com/shalldie/hook-service/actions)
 [![License](https://img.shields.io/npm/l/react-hook-svc?logo=github&style=flat-square)](https://github.com/shalldie/hook-service)
 
 A service、state manager for React. `minzipped` less than `300 bytes`。

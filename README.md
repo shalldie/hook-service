@@ -1,6 +1,6 @@
 # hook-service
 
-[![Build Status](https://img.shields.io/github/workflow/status/shalldie/hook-service/ci?label=build&logo=github&style=flat-square)](https://github.com/shalldie/hook-service/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/shalldie/hook-service/ci.yml?branch=master&label=build&logo=github&style=flat-square)](https://github.com/shalldie/hook-service/actions)
 [![License](https://img.shields.io/github/license/shalldie/hook-service?logo=github&style=flat-square)](https://github.com/shalldie/hook-service)
 
 `Monorepo` of service、state manager for Vue2/Vue3/React. `minzipped` less than `300 bytes`。
